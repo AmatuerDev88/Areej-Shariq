@@ -1,24 +1,85 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react"
+import { Routes, Route } from "react-router-dom" 
+import Nav from "./components/Nav"
+import WebsiteHome from "./components/WebsiteHome"
+import Footer from "./components/Footer"
+import WebsiteAbout from "./components/WebsiteAbout"
+import WebsiteBooks from "./components/WebsiteBooks"
+import WebsiteContact from "./components/WebsiteContact"
+import WebsiteNews from "./components/WebsiteNews"
+import WebsiteSpecificBook from "./components/WebsiteSpecificBook"
 
 function App() {
+  const [dropdown, changeDropdown] = React.useState(true)
+
+  function changeDropdownState(){
+    changeDropdown(!dropdown)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <Nav 
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteHome />
+          <Footer />
+        </>
+      } />
+      <Route path="/books" element={
+        <>
+          <Nav  
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteBooks />
+          <Footer />
+        </>
+      } />
+      <Route path="/about" element={
+        <>
+          <Nav  
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteAbout />
+          <Footer />
+        </>
+      } />
+      <Route path="/news" element={
+        <>
+          <Nav  
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteNews />
+          <Footer />
+        </>
+      } />
+      <Route path="/contact" element={
+        <>
+          <Nav  
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteContact />
+          <Footer />
+        </>
+      } />
+      <Route path="/books/:book" element={
+        <>
+          <Nav  
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteSpecificBook />
+          <Footer />
+        </>
+      } />
+    </Routes>
   );
 }
 

@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Ouch! My Tummy Hurts!",
+        "description": "OUCH! My Tummy Hurts is intended to help inform children about the medical world. In this story, avid football player Oliver Price has a mysterious tummy ache and loss of appetite. This book follows him 'to the doctors' and throughout his medical journey towards making a full recovery from his diagnosis...",
+        "img": "bookCover.png",
+        "stores": [
+            {
+                "amazon": "https://www.amazon.com/"
+            },
+            {
+                "indigo": "https://www.chapters.indigo.ca/en-ca/?fdtcm=1"
+            },
+            {
+                "wallmart": "https://www.walmart.ca/en"
+            },
+            {
+                "target": "https://www.target.com/"
+            }
+        ],
+        "tags": [
+            "kids"
+        ]
+    }
+]

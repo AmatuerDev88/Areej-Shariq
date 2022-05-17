@@ -1,38 +1,1070 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Inter', sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+:root {
+  --main-color: #F5B633;
+  --close-black: #444444;
+}
+::selection {
+  background: var(--main-color);
+  color: #FFF;
+}
+nav {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 30px;
+  z-index: 10;
+  background: #FFF;
 }
-
-.App-link {
-  color: #61dafb;
+nav h1 {
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: var(--close-black);
+  font-weight: 600;
+  font-size: 60px;
 }
-
-@keyframes App-logo-spin {
+.navElements {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-top: 35px;
+  gap: 100px;
+}
+.navElements a {
+  position: relative;
+  color: #ABABAB;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 17px;
+  width: max-content;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navElements a::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  bottom: -8px;
+  height: 2px;
+  background: #ABABAB;
+  border-radius: 100px;
+  transition: width 0.5s;
+}
+.navElements a:hover::before {
+  width: 100%;
+}
+.fa-bars, .fa-x {
+  display: none;
+  font-size: 35px;
+  cursor: pointer;
+}
+.fa-bars {
+  animation: spin 0.75s forwards;
+}
+.fa-x {
+  animation: spinReverse 0.75s forwards;
+}
+@keyframes spin {
   from {
     transform: rotate(0deg);
+    opacity: 0;
   }
   to {
     transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+.dropdownAlign {
+  position: absolute;
+  display: none;
+  justify-content: flex-end;
+  visibility: hidden;
+  width: 100vw;
+  height: calc(100vh - 100px);
+}
+.dropdown {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  position: absolute;
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  transition: top 0.75s ease;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+.dropdownClosed {
+  top: calc(-100% + -100px);
+}
+.dropdownOpen {
+  top: 0;
+}
+.dropdownElements {
+  width: 100%;
+  margin-top: 75px;
+}
+.dropdownElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  width: 100%;
+  cursor: pointer;
+  color: var(--close-black);
+  font-weight: 600;
+  font-size: 23px;
+  transition: color 0.5s, background 0.5s;
+  margin-top: 50px;
+  text-decoration: none;
+}
+.dropdownElement:hover {
+  background: var(--main-color);
+  color: #FFF;
+}
+.home {
+  display: flex;
+  justify-content: center;
+}
+.homeContainer {
+  display: grid;
+  margin-top: 165px;
+  grid-template-columns: max-content max-content;
+  gap: 5vw;
+}
+.homeInfo {
+  margin-top: 30px;
+}
+.homeImage {
+  justify-self: end;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11);
+}
+.homeInfo h1 {
+  color: #654C45;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 50px;
+}
+.homeInfo h1 span {
+  color: var(--main-color);
+}
+.homeInfo p {
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
+  color: #939393;
+  max-width: 550px;
+  margin-top: 75px;
+}
+.homeInfo a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 60px;
+  border: 2px solid var(--main-color);
+  margin-top: 75px;
+  border-radius: 100px;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--main-color);
+  transition: background 0.5s, color 0.5s;
+  cursor: pointer;
+  font-size: 17px;
+  text-decoration: none;
+}
+.homeInfo a:hover {
+  background: var(--main-color);
+  color: #FFF;
+}
+.books {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 125px;
+}
+.seperationLine {
+  width: 80%;
+  height: 1px;
+  background: #E2E2E2;
+}
+.bookSymbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 125px;
+  width: 50px;
+  height: 50px;
+  background: var(--main-color);
+  border-radius: 100px;
+}
+.bookSymbol i {
+  font-weight: 900;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.books h2 {
+  margin-top: 35px;
+  color: var(--close-black);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 50px;
+}
+.booksGrid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 125px;
+  width: 100%;
+  max-width: 1250px;
+}
+.bookElement {
+  position: relative;
+  text-align: center;
+  width: 280px;
+  height: 400px;
+  object-fit: cover;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11);
+  background: var(--main-color);
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0px 10px;
+}
+.bookElement img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  left: 0;
+  transition: opacity 0.5s;
+}
+.bookElement img:hover {
+  opacity: 0;
+}
+.bookElementHeader {
+  font-size: 25px;
+  color: #FFF;
+  font-weight: 700;
+  line-height: 35px;
+  margin-top: 50px;
+}
+.bookElementDescription {
+  color: #FFF;
+  margin-top: 45px;
+  line-height: 20px;
+  font-size: 15px;
+}
+.moreBooksButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 75px;
+  border: 2px solid var(--main-color);
+  margin-top: 150px;
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s;
+  text-decoration: none;
+}
+.moreBooksButton:hover {
+  background: var(--main-color);
+  color: #FFF;
+}
+.about {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 250px;
+  margin-bottom: 185px;
+}
+.aboutContainer {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 150px;
+}
+.authorSubHeader {
+  letter-spacing: 0.1em;
+  color: var(--main-color);
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 35px;
+}
+.aboutContainer div h3 {
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--close-black);
+  margin-top: 20px;
+}
+.authorDescription {
+  margin-top: 45px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  color: #CECECE;
+  max-width: 625px;
+}
+.moreAuthorButton {
+  display: inline-block;
+  margin-top: 70px;
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 25px;
+  text-decoration: none;
+}
+.aboutExtraContainer {
+  text-align: center;
+  max-width: 350px;
+}
+.aboutExtraHeader {
+  margin-top: 45px;
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 30px;
+}
+.aboutExtraTitle {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--close-black);
+  margin-top: 15px;
+}
+footer {
+  text-align: center;
+  padding: 20px 0px;
+  background: var(--main-color);
+}
+.footerHeader {
+  margin-top: 20px;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 60px;
+}
+.footerInfo {
+  margin-top: 40px;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-size: 15px;
+  color: #FFF;
+}
+.websiteBooks {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.websiteBooks .bookSymbol {
+  margin: 0px;
+}
+.websiteBooks h1 {
+  margin-top: 25px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 60px;
+  color: var(--close-black);
+}
+.websiteBookFilters {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  gap: 55px;
+}
+.websiteBookFilters div {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  border: 2px solid var(--main-color);
+  border-radius: 100px;
+  padding: 13px 25px;
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background 0.5s, color 0.5s;
+  cursor: pointer;
+}
+.websiteBookFilters div:hover {
+  background: var(--main-color);
+  color: #FFF;
+}
+.coloredFilter {
+  background: var(--main-color);
+  color: #FFF !important;
+}
+.websiteBooksContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 115px;
+  width: 100%;
+  margin-bottom: 240px;
+}
+.websiteNews {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.websiteNews .bookSymbol  {
+  margin: 0px;
+}
+.websiteNews h1 {
+  color: var(--close-black);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 60px;
+  margin-top: 20px;
+}
+.newsSegment {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  margin-top: 120px;
+  gap: 90px;
+  margin-bottom: 250px;
+}
+.newsSegment img {
+  width: 400px;
+  height: 300px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11);
+  border-radius: 25px;
+  object-fit: cover;
+}
+.newsSegment div {
+  padding-top: 25px;
+}
+.newsSegment div h2 {
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 30px;
+}
+.newsSegmentDescription {
+  margin-top: 40px;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: #919191;
+  max-width: 550px;
+}
+.newsSegmentMore {
+  margin-top: 50px;
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+}
+.websiteContact {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  margin-bottom: 230px;
+  padding: 0px 25px;
+}
+.contactContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 35px 0px;
+  overflow: hidden;
+  background: #F5F5F5;
+}
+.contactForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 50px;
+  padding: 50px;
+}
+.contactInfo {
+  max-width: 40%;
+  min-width: 400px;
+  border-top-left-radius: 35px;
+  background: var(--main-color);
+  padding: 50px;
+}
+.contactFormInput {
+  background: #FFFFFF;
+  border-radius: 15px;
+  color: #9D9D9D;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 15px;
+  height: 65px;
+  outline: 0px;
+  border: 0px;
+  text-indent: 25px;
+  width: 100%;
+}
+.contactFormInput::placeholder {
+  color: #9D9D9D;
+}
+.contactFormInputSpan2 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.contactFormInputBigger {
+  height: 125px;
+}
+.contactInfo h1 {
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 25px;
+}
+.contactInfoElement {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+.contactInfoElements {
+  margin-top: 50px;
+}
+.contactInfoElement i {
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 25px;
+  margin-right: 25px;
+}
+.contactInfoElement p {
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+.contactForm button {
+  width: 185px;
+  height: 60px;
+  outline: 0px;
+  border: 0px;
+  background: var(--main-color);
+  color: #FFF;
+  font-weight: 700;
+  font-size: 20px;
+  font-size: 18px;
+  border-radius: 25px 0px;
+  letter-spacing: 0.1em;
+  margin-top: 15px;
+  border: 2px solid var(--main-color);
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s;
+}
+.contactForm button:hover {
+  background: transparent;
+  color: var(--main-color);
+}
+.contactInfoSocials {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 85px;
+}
+.contactInfoSocials div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  border: 2px solid #FFF;
+  border-radius: 100px;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 25px;
+  transition: background 0.5s, color 0.5s;
+  cursor: pointer;
+}
+.contactInfoSocials div:hover {
+  background: #FFF;
+  color: var(--main-color);
+}
+.websiteAbout {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 130px;
+}
+.websiteAboutAlign {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 100px;
+}
+.websiteImageContainer {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+}
+.websiteImageContainer img {
+  width: 400px;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 35px;
+}
+.websiteImageHeader {
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--main-color);
+  margin-top: 45px;
+}
+.websiteImageSubHeader {
+  margin-top: 15px;
+  letter-spacing: 0.1em;
+  color: var(--close-black);
+  font-weight: 500;
+  font-size: 20px;
+}
+.websiteAboutSubHeader {
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 50px;
+  color: var(--main-color);
+}
+.websiteAboutInfo h1 {
+  margin-top: 25px;
+  color: var(--close-black);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-size: 40px;
+}
+.websiteAboutDescription {
+  max-width: 625px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  letter-spacing: 0.1em;
+  color: #CECECE;
+  margin-top: 45px;
+}
+.websiteAboutSeperationLine {
+  margin-top: 90px;
+  width: 70%;
+  height: 1px;
+  background: #C4C4C4;
+}
+.websiteAboutQuotes {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-bottom: 200px;
+}
+.websiteAboutQuote {
+  margin-top: 70px;
+}
+.websiteAboutQuoteDescription {
+  letter-spacing: 0.1em;
+  color: var(--close-black);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+}
+.websiteAboutQuotePerson {
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 17px;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+.specificBook {
+  display: flex;
+  justify-content: center;
+  margin-top: 160px;
+  margin-bottom: 250px;
+}
+.specificBookContainer {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 120px;
+}
+.specificBookContainer img {
+  width: 415px;
+  object-fit: cover;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11);
+  border-radius: 5px;
+}
+.specificBookInfo {
+  padding-top: 30px;
+}
+.specificBookInfo h1 {
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 50px;
+  color: var(--main-color);
+}
+.specificBookInfo p {
+  margin-top: 60px;
+  color: #939393;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
+  max-width: 600px;
+}
+.specificBookLinks {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  gap: 40px;
+  margin-top: 80px;
+}
+.specificBookLinks a {
+  border: 2px solid var(--main-color);
+  padding: 15px 35px;
+  border-radius: 10px;
+  color: var(--main-color);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s;
+  text-decoration: none;
+  text-align: center;
+}
+.specificBookLinks a:hover {
+  background: var(--main-color);
+  color: #FFF;
+}
+@media screen and (max-width: 1150px) {
+  .homeContainer {
+    grid-template-columns: max-content;
+  }
+  .homeImage {
+    justify-self: center;
+  }
+  .homeInfo {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+  }
+  .aboutContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+    padding: 10px;
+  }
+  .aboutContainer img {
+    width: 300px;
+  }
+  .aboutExtraContainer {
+    display: none;
+  }
+  .aboutContainer div h3 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .authorDescription {
+    font-size: 12px;
+  }
+  .websiteAboutAlign {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    padding: 0px 10px;
+  }
+  .websiteImageHeader {
+    display: none;
+  }
+  .websiteImageSubHeader {
+    display: none;
+  }
+  .websiteAboutAlign {
+    gap: 100px;
+  }
+  .websiteAboutQuotes {
+    text-align: center;
+  }
+  .websiteAboutQuotePerson {
+    margin-left: 0px;
+  }
+  .specificBookContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    padding: 0px 10px;
+  }
+  .specificBookLinks {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 600px) {
+  .homeInfo h1 {
+    font-size: 30px;
+  }
+  .homeInfo p {
+    font-size: 13px;
+  }
+  .homeContainer {
+    grid-template-columns: initial;
+    padding: 0px 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .fa-bars, .fa-x {
+    display: block;
+  }
+  .navElements {
+    display: none;
+  }
+  nav {
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 25px 50px;
+  }
+  nav h1 {
+    font-size: 50px;
+  }
+  .dropdownAlign {
+    display: flex;
+  }
+}
+@media screen and (max-width: 550px) {
+  nav h1 {
+    font-size: 25px;
+  }
+  nav {
+    padding: 25px 25px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .homeImage {
+    width: 250px;
+  }
+  .homeInfo a {
+    width: 250px;
+  }
+  .homeInfo h1 {
+    line-height: 40px;
+    font-size: 25px;
+  }
+  .homeInfo p {
+    font-size: 12px;
+    line-height: 25px;
+  }
+  .moreBooksButton {
+    width: 260px;
+  }
+  .books h2 {
+    font-size: 40px;
+  }
+  .websiteImageContainer img {
+    width: 260px;
+  }
+  .websiteAboutDescription {
+    font-size: 12px;
+  }
+  .websiteAboutInfo h1 {
+    font-size: 30px;
+  }
+  .websiteAboutQuoteDescription {
+    font-size: 15px;
+  }
+  .websiteAboutAlign {
+    gap: 75px;
+  }
+  .specificBookContainer img {
+    width: 260px;
+  }
+  .specificBookContainer h1 {
+    font-size: 30px;
+  }
+  .specificBookInfo p {
+    font-size: 13px;
+  }
+  .specificBookContainer {
+    gap: 100px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .aboutContainer img {
+    width: 250px;
+  }
+  .authorSubHeader {
+    font-size: 15px;
+  }
+  .aboutContainer {
+    gap: 75px;
+  }
+  .moreAuthorButton {
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .newsSegment {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center; 
+    padding: 0px 10px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .newsSegment img {
+    width: 260px;
+  }
+  .newsSegmentDescription {
+    font-size: 15px;
+  }
+  .newsSegment div h2 {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .footerHeader {
+    font-size: 35px;
+  }
+  .footerInfo {
+    font-size: 13px;
+    line-height: 25px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .contactContainer {
+    flex-flow: column;
+  }
+  .contactInfo {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 100%;
+    text-align: center;
+    min-width: 0px;
+  }
+  .contactInfoSocials {
+    max-width: 500px;
+  }
+  .contactForm button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .contactFormInput:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .contactFormInput:nth-child(2) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .contactInfoSocials {
+    flex-flow: column;
+    align-items: center;
+  }
+  .contactInfoSocials div:nth-child(2) {
+    margin: 25px 0px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .contactFormInput {
+    height: 50px;
+  }
+  .contactForm {
+    padding: 35px;
+    gap: 35px;
+  }
+  .contactInfoElement {
+    flex-flow: column;
+  }
+  .contactInfoElement p {
+    margin-top: 15px;
+  }
+  .contactInfoElement i {
+    margin: 0px;
+  }
+  .contactInfo {
+    padding: 35px;
+  }
+  .websiteContact {
+    padding: 0px 10px;
   }
 }
