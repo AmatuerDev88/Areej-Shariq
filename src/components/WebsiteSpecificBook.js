@@ -13,7 +13,7 @@ export default function WebsiteSpecificBook() {
         <main>
             <section className="specificBook">
                 <div className="specificBookContainer">
-                    <img src={`http://localhost:3000/${book.img}`} alt="book" />
+                    <img src={`/${book.img}`} alt="book" />
                     <div className="specificBookInfo">
                         <h1>{book.name}</h1>
                         <p>{book.description}</p>
