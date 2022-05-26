@@ -28,7 +28,7 @@ export default function WebsiteNews() {
 
     if (markdown.length > 0) {
         markdownData = markdown.map((data1, index) => {
-            let markdownObjectValues = data1.split("---")[1].split("\r\n").map(data2 => {
+            let markdownObjectValues = data1.split("---")[1].split("\n").map(data2 => {
                 return data2.substring((data2.indexOf(":") + 1))
             })
             return (
