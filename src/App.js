@@ -9,6 +9,8 @@ import WebsiteBooks from "./components/WebsiteBooks"
 import WebsiteContact from "./components/WebsiteContact"
 import WebsiteNews from "./components/WebsiteNews"
 import WebsiteSpecificBook from "./components/WebsiteSpecificBook"
+import WebsiteSpecificNews from "./components/WebsiteSpecificNews"
+
 
 function App() {
   const [dropdown, changeDropdown] = React.useState(true)
@@ -76,6 +78,16 @@ function App() {
             changeDropdownState={changeDropdownState}
           />
           <WebsiteSpecificBook />
+          <Footer />
+        </>
+      } />
+      <Route path="/news/:index" element={
+        <>
+          <Nav  
+            dropdown={dropdown}
+            changeDropdownState={changeDropdownState}
+          />
+          <WebsiteSpecificNews />
           <Footer />
         </>
       } />
