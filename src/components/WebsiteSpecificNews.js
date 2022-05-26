@@ -31,6 +31,7 @@ export default function WebsiteSpecificNews() {
     if (markdown.length > 1) {
         console.log("all Markdown " + markdown[index])
         markdownData = markdown[index].split("---")[1].split("\r\n").map(data2 => {
+            console.log("Each Markdown " + data2.substring((data2.indexOf(":") + 1)))
             return data2.substring((data2.indexOf(":") + 1))
         })
         console.log(markdownData)
