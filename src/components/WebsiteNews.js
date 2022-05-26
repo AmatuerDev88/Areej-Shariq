@@ -31,11 +31,12 @@ export default function WebsiteNews() {
             let markdownObjectValues = data1.split("---")[1].split("\n").map(data2 => {
                 return data2.substring((data2.indexOf(":") + 1))
             })
+            console.log(markdownObjectValues)
             return (
                 <NewsComponent 
-                    image={markdownObjectValues[4]}
-                    header={markdownObjectValues[2]}
-                    description={markdownObjectValues[5]}
+                    image={markdownObjectValues[2]}
+                    header={markdownObjectValues[1]}
+                    description={markdownObjectValues[4]}
                     link={index}
                     key={index}
                 />
@@ -45,7 +46,7 @@ export default function WebsiteNews() {
 
     return (
         <main>
-            { markdown[1] &&
+            { markdown &&
                 <section className="websiteNews">
                     <div className="bookSymbol">
                         <i class="fa-solid fa-book"></i>        

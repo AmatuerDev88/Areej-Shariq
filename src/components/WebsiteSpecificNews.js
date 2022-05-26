@@ -28,18 +28,19 @@ export default function WebsiteSpecificNews() {
 
     let markdownData;
 
-    if (markdown.length > 1) {
+    if (markdown.length > 0) {
         markdownData = markdown[index].split("---")[1].split("\n").map(data2 => {
             return data2.substring((data2.indexOf(":") + 1))
         })
     }
+    console.log(markdownData)
     return (
         <main>
             { markdownData &&
                 <section className="specificNews">
-                    <img src={markdownData[4]} alt="post thumbnail" className="specificNewsThumbnail" />
-                    <h1 className="specificNewsHeader">{markdownData[2]}</h1>
-                    <p className="specificNewsAuthor"><span>Written by</span> Areej Shariq  |  Tags, go, here</p>
+                    <img src={markdownData[2]} alt="post thumbnail" className="specificNewsThumbnail" />
+                    <h1 className="specificNewsHeader">{markdownData[1]}</h1>
+                    <p className="specificNewsAuthor"><span>Written by</span> Areej Shariq  |  {markdownData[3]}</p>
                     <div className="specificNewsArticleInfo">
                         <ReactMarkdown>{markdown[index].split("---")[2].replace("<!--EndFragment-->", "").replace("<!--StartFragment-->", "")}</ReactMarkdown>
                     </div>
