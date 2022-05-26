@@ -31,12 +31,14 @@ export default function WebsiteNews() {
             let markdownObjectValues = data1.split("---")[1].split("\n").map(data2 => {
                 return data2.substring((data2.indexOf(":") + 1))
             })
-            console.log(markdownObjectValues)
+            let markdownDescription = data1.split("---")[2].split("\n").map(data2 => {
+                return data2.substring((data2.indexOf(":") + 1))
+            })
             return (
                 <NewsComponent 
                     image={markdownObjectValues[2]}
                     header={markdownObjectValues[1]}
-                    description={markdownObjectValues[4]}
+                    description={markdownDescription[1].substring(0, 175) + "..."}
                     link={index}
                     key={index}
                 />

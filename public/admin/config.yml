@@ -16,5 +16,4 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Thumbnail", name: "thumbnail", widget: "image"}
       - {label: "Tags (tag, tag, tag [just five])", name: "tags", widget: "string"}
-      - {label: "Description", name: "desciption", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
