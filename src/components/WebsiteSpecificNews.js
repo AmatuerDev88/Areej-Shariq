@@ -34,46 +34,15 @@ export default function WebsiteSpecificNews() {
             return data2.substring((data2.indexOf(":") + 1))
         })
     }
-    
-    /*const [markdown, changeMarkdown] = React.useState([])
-    const index = useParams().index
-    
-    const importAll = (r) => {
-        return r.keys().map(r);
-    };
-      
-    const allData = importAll(
-        require.context("./posts", false)
-    )
-    
-    React.useEffect(() => {
-        allData.map(data => {
-            fetch(data)
-                .then(response => {
-                    return response.text()
-                })
-                .then(text => {
-                    changeMarkdown(prevState => [...prevState, text])
-                })
-        })
-    }, [])
 
-    let data = markdown.map((data) => {
-        var MarkdownIt = require('markdown-it');
-        var md = new MarkdownIt();
-        var result = md.parse(data);
-        var postElements = []
-        result[2].children.map(data => {
-            if (data.type === "text")
-            postElements.push(data.content.substring((data.content.indexOf(":") + 1)))
-        })
-        return postElements
-    })
-
-    const post = data[index]
-
-    console.log(post)*/
-
+    if (markdownData) {
+        console.log(markdownData)
+        console.log(markdownData[0])
+        console.log(markdownData[1])
+        console.log(markdownData[2])
+        console.log(markdownData[3])
+        console.log(markdownData[4])
+    }
     return (
         <main>
             { markdownData &&
