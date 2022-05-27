@@ -858,7 +858,7 @@ ol, ul {
   font-size: 18px;
   overflow-wrap: break-word;
 }
-.specificNewsArticleInfo h1, .specificNewsArticleInfo h2 .specificNewsArticleInfo h3 .specificNewsArticleInfo h4 .specificNewsArticleInfo h5 .specificNewsArticleInfo h6 {
+.specificNewsArticleInfo h1, .specificNewsArticleInfo h2, .specificNewsArticleInfo h3 .specificNewsArticleInfo h4 .specificNewsArticleInfo h5 .specificNewsArticleInfo h6 {
   font-size: 40px;
   font-weight: 700;
   color: rgb(44, 44, 44);
