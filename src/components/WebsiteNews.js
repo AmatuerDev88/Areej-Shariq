@@ -1,5 +1,6 @@
 import React from "react"
 import NewsComponent from "./NewsComponent"
+import ReactMarkdown from 'react-markdown'
 
 export default function WebsiteNews() {
     const [markdown, changeMarkdown] = React.useState([])
@@ -27,18 +28,23 @@ export default function WebsiteNews() {
     let markdownData;
 
     if (markdown.length > 0) {
+        console.log(markdown)
         markdownData = markdown.map((data1, index) => {
             let markdownObjectValues = data1.split("---")[1].split("\n").map(data2 => {
                 return data2.substring((data2.indexOf(":") + 1))
             })
             let markdownDescription = data1.split("---")[2].split("\n").map(data2 => {
-                return data2.substring((data2.indexOf(":") + 1))
+                if (!data2.includes("["))
+                return data2
+            })
+            let filteredDescription = markdownDescription.filter(value => {
+                return value !== "\r"
             })
             return (
                 <NewsComponent 
                     image={markdownObjectValues[2]}
                     header={markdownObjectValues[1]}
-                    description={markdownDescription[1].substring(0, 175) + "..."}
+                    description={filteredDescription.join(" ").replaceAll("#", "").replaceAll("*", "").replaceAll("<!--EndFragment-->", "").replaceAll("<!--StartFragment-->", "").substring(0, 175) + "..."}
                     link={index}
                     key={index}
                 />
@@ -54,7 +60,7 @@ export default function WebsiteNews() {
                         <i class="fa-solid fa-book"></i>        
                     </div>
                     <h1>News</h1>
-                    {markdownData}
+                    {markdownData ? markdownData : <div class="websiteNewsPreload"></div>}
                 </section>
             }
         </main>

@@ -878,6 +878,27 @@ pre {
   border-radius: 10px;
   overflow-y: scroll;
 }
+.websiteNewsPreload {
+  height: 100vh;
+}
+.websiteNewsPreloadView {
+  position: absolute;
+  left: calc(50% - 50px);
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  border: 5px solid #fff;
+  border-top: 5px solid var(--main-color);
+  border-radius: 100px;
+  animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  } to {
+    transform: rotate(360deg)
+  }
+}
 pre::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -897,7 +918,7 @@ pre::-webkit-scrollbar-corner {
 pre::-webkit-scrollbar-thumb:hover {
   background-color: rgb(228, 228, 228);
 }
-.specificNewsArticleInfo p, .specificNewsArticleInfo ul, .specificNewsArticleInfo ol, .specificNewsArticleInfo img, .specificNewsArticleInfo h1, .specificNewsArticleInfo h2, .specificNewsArticleInfo h3, .specificNewsArticleInfo h4, .specificNewsArticleInfo h5, .specificNewsArticleInfo h6 {
+.specificNewsArticleInfo p, .specificNewsArticleInfo ul, .specificNewsArticleInfo ol, .specificNewsArticleInfo h1, .specificNewsArticleInfo h2, .specificNewsArticleInfo h3, .specificNewsArticleInfo h4, .specificNewsArticleInfo h5, .specificNewsArticleInfo h6 {
   margin-bottom: 25px;
 }
 @media screen and (max-width: 700px) {

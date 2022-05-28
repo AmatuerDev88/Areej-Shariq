@@ -21,6 +21,7 @@ export default function WebsiteSpecificNews() {
                     return response.text()
                 })
                 .then(text => {
+                    console.log(text)
                     changeMarkdown(prevState => [...prevState, text])
                 })
         })
@@ -28,24 +29,28 @@ export default function WebsiteSpecificNews() {
 
     let markdownData;
 
-    if (markdown.length > 0) {
+    if (markdown.length >= allData.length) {
         markdownData = markdown[index].split("---")[1].split("\n").map(data2 => {
             return data2.substring((data2.indexOf(":") + 1))
         })
+        console.log(markdown[index].split("---")[2].replaceAll("<!--EndFragment-->", ""))
     }
-    console.log(markdownData)
+    
     return (
         <main>
-            { markdownData &&
+            { markdownData ?
                 <section className="specificNews">
                     <img src={markdownData[2]} alt="post thumbnail" className="specificNewsThumbnail" />
                     <h1 className="specificNewsHeader">{markdownData[1]}</h1>
                     <p className="specificNewsAuthor"><span>Written by</span> Areej Shariq  |  {markdownData[3]}</p>
                     <div className="specificNewsArticleInfo">
-                        <ReactMarkdown>{markdown[index].split("---")[2].replace("<!--EndFragment-->", "").replace("<!--StartFragment-->", "")}</ReactMarkdown>
+                        <ReactMarkdown>{markdown[index].split("---")[2].replaceAll("<!--EndFragment-->", "").replaceAll("<!--StartFragment-->", "")}</ReactMarkdown>
                     </div>
                 </section>
-            }
+             : <div className="websiteNewsPreload">
+                 <div className="websiteNewsPreloadView"></div>
+               </div>
+    }
         </main>
     )
 }
