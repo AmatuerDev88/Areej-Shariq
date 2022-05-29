@@ -1,44 +1,47 @@
 import React from "react"
-
+import emailjs from "emailjs-com"
 export default function WebsiteContact() {
+    const form = React.useRef();
+
+    function sendEmail(e) {
+        e.preventDefault();
+
+        emailjs.sendForm('service_cu9t9dx', 'template_1hdaicr', form.current, 'uMOzHGGuFxwXmHefZ')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+    }
+
     return (
         <main>
             <section className="websiteContact">
                 <div className="contactContainer">
-                    <div className="contactForm">
-                        <input type="text" className="contactFormInput" placeholder="First Name"/>
-                        <input type="text" className="contactFormInput" placeholder="Last Name"/>
-                        <input type="text" className="contactFormInput contactFormInputSpan2" placeholder="Email"/>
-                        <input type="text" className="contactFormInput contactFormInputSpan2" placeholder="Phone"/>
-                        <input type="text" className="contactFormInput contactFormInputSpan2 contactFormInputBigger" placeholder="Message"/>
+                    <form ref={form} className="contactForm" onSubmit={sendEmail}>
+                        <input type="text" className="contactFormInput" placeholder="First Name" name="first_name" required/>
+                        <input type="text" className="contactFormInput" placeholder="Last Name" name="last_name"/>
+                        <input type="text" className="contactFormInput contactFormInputSpan2" placeholder="Email" name="email" required/>
+                        <input type="text" className="contactFormInput contactFormInputSpan2" placeholder="Phone" name="phone"/>
+                        <textarea className="contactFormInput contactFormInputSpan2 contactFormInputBigger" placeholder="Message" name="message" required></textarea>
                         <button>Submit</button>
-                    </div>
+                    </form>
                     <div className="contactInfo">
                         <h1>Contact Info</h1>
                         <div className="contactInfoElements">
                             <div className="contactInfoElement">
-                                <i class="fa-solid fa-phone"></i>
-                                <p>(1) 123 123 1234</p>
-                            </div>
-                            <div className="contactInfoElement">
-                                <i class="fa-solid fa-envelope"></i>
+                                <i className="fa-solid fa-envelope"></i>
                                 <p>loipsum@gmail.com</p>
                             </div>
                             <div className="contactInfoElement">
-                                <i class="fa-solid fa-globe"></i>
+                                <i className="fa-solid fa-globe"></i>
                                 <p>areej-shariq.com</p>
                             </div>
                         </div>
                         <div className="contactInfoSocials">
-                            <div>
-                                <i class="fa-brands fa-instagram"></i>
-                            </div>
-                            <div>
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </div>
-                            <div>
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </div>
+                            <a href="https://www.instagram.com/tothedoctorseries/">
+                                <i className="fa-brands fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -10,14 +10,23 @@ import WebsiteContact from "./components/WebsiteContact"
 import WebsiteNews from "./components/WebsiteNews"
 import WebsiteSpecificBook from "./components/WebsiteSpecificBook"
 import WebsiteSpecificNews from "./components/WebsiteSpecificNews"
-
+import 'aos/dist/aos.css';
+import Aos from "aos"
 
 function App() {
+  React.useEffect(() => {
+    Aos.init({
+      duration: 1000
+    })
+  }, [])
+  
   const [dropdown, changeDropdown] = React.useState(true)
 
   function changeDropdownState(){
     changeDropdown(!dropdown)
   }
+
+  !dropdown ? document.body.style.overflow = "hidden" : document.body.style.overflow = "initial"
 
   return (
     <Routes>

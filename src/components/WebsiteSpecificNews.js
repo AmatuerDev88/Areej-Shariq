@@ -21,7 +21,6 @@ export default function WebsiteSpecificNews() {
                     return response.text()
                 })
                 .then(text => {
-                    console.log(text)
                     changeMarkdown(prevState => [...prevState, text])
                 })
         })
@@ -33,7 +32,6 @@ export default function WebsiteSpecificNews() {
         markdownData = markdown[index].split("---")[1].split("\n").map(data2 => {
             return data2.substring((data2.indexOf(":") + 1))
         })
-        console.log(markdown[index].split("---")[2].replaceAll("<!--EndFragment-->", ""))
     }
     
     return (

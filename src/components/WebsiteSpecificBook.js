@@ -6,17 +6,21 @@ export default function WebsiteSpecificBook() {
     const index = useParams().book
     const book = bookData[index]
 
-    const buyLinks = book.stores.map(data => {
-        return <a href={Object.values(data)}>{Object.keys(data)}</a>
+    const buyLinks = book.stores.map((data, index) => {
+        return (
+            <div className="specificBookAnimateStores" data-aos="fade-up" data-aos-once="true" data-aos-delay={`${(index * 100) + 900}`}>
+                <a href={Object.values(data)}>{Object.keys(data)}</a>
+            </div>
+        )
     })
     return (
         <main>
             <section className="specificBook">
                 <div className="specificBookContainer">
-                    <img src={`/${book.img}`} alt="book" />
+                    <img src={`/${book.img}`} alt="book"  data-aos="fade-up" data-aos-once="true" data-aos-delay="500"/>
                     <div className="specificBookInfo">
-                        <h1>{book.name}</h1>
-                        <p>{book.description}</p>
+                        <h1 data-aos="fade-up" data-aos-once="true" data-aos-delay="700">{book.name}</h1>
+                        <p data-aos="fade-up" data-aos-once="true" data-aos-delay="900">{book.description}</p>
                         <div className="specificBookLinks">
                             {buyLinks}
                         </div>

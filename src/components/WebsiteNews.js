@@ -27,8 +27,7 @@ export default function WebsiteNews() {
 
     let markdownData;
 
-    if (markdown.length > 0) {
-        console.log(markdown)
+    if (markdown.length >= allData.length) {
         markdownData = markdown.map((data1, index) => {
             let markdownObjectValues = data1.split("---")[1].split("\n").map(data2 => {
                 return data2.substring((data2.indexOf(":") + 1))
@@ -49,11 +48,11 @@ export default function WebsiteNews() {
         <main>
             { markdown &&
                 <section className="websiteNews">
-                    <div className="bookSymbol">
-                        <i class="fa-solid fa-book"></i>        
+                    <div className="bookSymbol" data-aos="fade-up" data-aos-once="true">
+                        <i className="fa-solid fa-book"></i>        
                     </div>
-                    <h1>News</h1>
-                    {markdownData ? markdownData : <div class="websiteNewsPreload"></div>}
+                    <h1 data-aos="fade-up" data-aos-once="true" data-aos-delay="100">Articles</h1>
+                    {markdownData ? markdownData : <div className="websiteNewsPreload"></div>}
                 </section>
             }
         </main>
